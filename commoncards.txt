@@ -1,4 +1,11 @@
-link=acolyte_cardsxlsx
+; ============================
+;  MTG-Style Rounded Card Frame
+;  Uses your existing fields:
+;  [title], [image], [text]
+;  and your LINK imports
+; ============================
+
+link=acolyte_cards.xlsx
 link=bruiser_cards.xlsx
 link=occultist_cards.xlsx
 link=scoundrel_cards.xlsx
@@ -7,25 +14,29 @@ link=starter_cards.xlsx
 link=equipment_cards.xlsx
 
 [all]="1-{(title)}"
+
 [back]=#FFFFFF
 [box_back]=#FFFFFF
 [box_border]=#000000
 
-; Background
-rectangle=[all],0,0,100%,100%,[back]
+; === Full Card Rounded Frame ===
+; rectangle: index, x,y,w,h, fill, border, thickness, radius
+rectangle=[all],0,0,100%,100%,[back],[box_border],0.15cm,0.6cm
 
-; IMAGE AREA
-rectangle=[all],8%,8%,84%,55%,[box_back]
-image=[all],[image],8%,8%,84%,55%,0,P
-rectangle=[all],8%,8%,84%,55%,[box_border],empty,0.1
-
-; TITLE
+; === Title Bar (rounded) ===
 font="Arial",18,T,#000000
-text=[all],[title],0,0,100%,8%,center,center
+rectangle=[all],4%,4%,92%,10%,#DDDDDD,[box_border],0.1cm,0.4cm
+text=[all],[title],4%,4%,92%,10%,center,center
 
-; TEXT BOX
-rectangle=[all],8%,66%,84%,28%,[box_back]
-rectangle=[all],8%,66%,84%,28%,[box_border],empty,0.1
+; === Image Area (rounded) ===
+rectangle=[all],6%,16%,88%,50%,[box_back],[box_border],0.1cm,0.4cm
+image=[all],[image],6%,16%,88%,50%,0,P
+
+; === Text Box (rounded) ===
+rectangle=[all],6%,70%,88%,24%,[box_back],[box_border],0.1cm,0.4cm
 
 font="Times New Roman",11,T,#000000
-text=[all],[text],12%,70%,76%,22%,left,wwtop
+text=[all],[text],10%,72%,80%,20%,left,wwtop
+
+; === Print ===
+print=[all]
