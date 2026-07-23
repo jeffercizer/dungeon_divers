@@ -1,0 +1,31 @@
+link=acolyte_cardsxlsx
+link=bruiser_cards.xlsx
+link=occultist_cards.xlsx
+link=scoundrel_cards.xlsx
+link=general_cards.xlsx
+link=starter_cards.xlsx
+link=equipment_cards.xlsx
+
+[all]="1-{(title)}"
+[back]=#FFFFFF
+[box_back]=#FFFFFF
+[box_border]=#000000
+
+; Background
+rectangle=[all],0,0,100%,100%,[back]
+
+; IMAGE AREA
+rectangle=[all],8%,8%,84%,55%,[box_back]
+image=[all],[image],8%,8%,84%,55%,0,P
+rectangle=[all],8%,8%,84%,55%,[box_border],empty,0.1
+
+; TITLE
+font="Arial",18,T,#000000
+text=[all],[title],0,0,100%,8%,center,center
+
+; TEXT BOX
+rectangle=[all],8%,66%,84%,28%,[box_back]
+rectangle=[all],8%,66%,84%,28%,[box_border],empty,0.1
+
+font="Times New Roman",11,T,#000000
+text=[all],[text],12%,70%,76%,22%,left,wwtop
