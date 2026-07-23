@@ -1,7 +1,3 @@
-; ============================
-; MTG-like card using your data
-; ============================
-
 link=acolyte_cards.xlsx
 link=bruiser_cards.xlsx
 link=occultist_cards.xlsx
@@ -11,46 +7,30 @@ link=starter_cards.xlsx
 link=equipment_cards.xlsx
 
 [all]="1-{(title)}"
+[back]=#FFFFFF
+[box_back]=#FFFFFF
+[box_border]=#000000
 
-[back]      = #FFFFFF
-[frame_blue]= #3A6FD9
-[box_back]  = #FDFDFD
-[box_border]= #000000
+; Outer black border
+rectangle=[all], 0, 0, 100%, 100%, #AAAAAA
 
-; === Outer card with rounded corners ===
-rectangle=[all],0,0,100%,100%,[frame_blue],[box_border],0.18cm,0.6cm
+; Background
+rectangle=[all],2%,2%,96%,96%,[back]
 
-; === Inner light frame ===
-rectangle=[all],3%,3%,94%,94%,[back],[box_border],0.12cm,0.45cm
+; IMAGE AREA
+rectangle=[all],8%,10%,84%,55%,[box_back]
+image=[all],[image],8%,10%,84%,55%,0,P
+rectangle=[all],8%,10%,84% ,55%,[box_border],empty,0.1
 
-; === Title line (like "Rite of Replication") ===
-font="Beleren",18,B,#000000
-rectangle=[all],6%,6%,70%,8%,#D9D9D9,[box_border],0.08cm,0.35cm
-text=[all],[title],8%,6%,66%,8%,left,center
+; TITLE
+font="Arial",18,T,#000000
+text=[all],[title],0,2%,100%,8%,center,center
 
-; === (Optional) mana cost area on the right ===
-; If you add a [cost] field later:
-; font="Beleren",16,B,#000000
-; text=[all],[cost],78%,6%,16%,8%,right,center
+; TEXT BOX
+rectangle=[all],8%,68%,84%,28%,[box_back]
+rectangle=[all],8%,68%,84%,28%,[box_border],empty,0.1
 
-; === Art box ===
-rectangle=[all],6%,16%,88%,40%,[box_back],[box_border],0.08cm,0.35cm
-image=[all],[image],6%,16%,88%,40%,0,P
+font="Times New Roman",11,T,#000000
+text=[all],[text],12%,70%,76%,22%,left,wwtop
 
-; === Type line (you can hardcode or use a field) ===
-; For now, just show a generic type using [text_type] if you add it later.
-font="Beleren",14,,#000000
-rectangle=[all],6%,58%,88%,8%,#D9D9D9,[box_border],0.08cm,0.35cm
-; text=[all],[type],8%,58%,84%,8%,left,center
 
-; === Rules text box ===
-rectangle=[all],6%,68%,88%,22%,[box_back],[box_border],0.08cm,0.35cm
-
-font="Times New Roman",11,,#000000
-text=[all],[text],9%,70%,82%,18%,left,wwtop
-
-; === Copyright / set line (bottom) ===
-font="Times New Roman",7,,#000000
-text=[all],"TM & © Your Game",6%,90%,88%,6%,right,center
-
-print=[all]
