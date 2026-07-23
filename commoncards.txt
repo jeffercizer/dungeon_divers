@@ -1,8 +1,5 @@
 ; ============================
-;  MTG-Style Rounded Card Frame
-;  Uses your existing fields:
-;  [title], [image], [text]
-;  and your LINK imports
+; MTG-like card using your data
 ; ============================
 
 link=acolyte_cards.xlsx
@@ -15,28 +12,45 @@ link=equipment_cards.xlsx
 
 [all]="1-{(title)}"
 
-[back]=#FFFFFF
-[box_back]=#FFFFFF
-[box_border]=#000000
+[back]      = #FFFFFF
+[frame_blue]= #3A6FD9
+[box_back]  = #FDFDFD
+[box_border]= #000000
 
-; === Full Card Rounded Frame ===
-; rectangle: index, x,y,w,h, fill, border, thickness, radius
-rectangle=[all],0,0,100%,100%,[back],[box_border],0.15cm,0.6cm
+; === Outer card with rounded corners ===
+rectangle=[all],0,0,100%,100%,[frame_blue],[box_border],0.18cm,0.6cm
 
-; === Title Bar (rounded) ===
-font="Arial",18,T,#000000
-rectangle=[all],4%,4%,92%,10%,#DDDDDD,[box_border],0.1cm,0.4cm
-text=[all],[title],4%,4%,92%,10%,center,center
+; === Inner light frame ===
+rectangle=[all],3%,3%,94%,94%,[back],[box_border],0.12cm,0.45cm
 
-; === Image Area (rounded) ===
-rectangle=[all],6%,16%,88%,50%,[box_back],[box_border],0.1cm,0.4cm
-image=[all],[image],6%,16%,88%,50%,0,P
+; === Title line (like "Rite of Replication") ===
+font="Beleren",18,B,#000000
+rectangle=[all],6%,6%,70%,8%,#D9D9D9,[box_border],0.08cm,0.35cm
+text=[all],[title],8%,6%,66%,8%,left,center
 
-; === Text Box (rounded) ===
-rectangle=[all],6%,70%,88%,24%,[box_back],[box_border],0.1cm,0.4cm
+; === (Optional) mana cost area on the right ===
+; If you add a [cost] field later:
+; font="Beleren",16,B,#000000
+; text=[all],[cost],78%,6%,16%,8%,right,center
 
-font="Times New Roman",11,T,#000000
-text=[all],[text],10%,72%,80%,20%,left,wwtop
+; === Art box ===
+rectangle=[all],6%,16%,88%,40%,[box_back],[box_border],0.08cm,0.35cm
+image=[all],[image],6%,16%,88%,40%,0,P
 
-; === Print ===
+; === Type line (you can hardcode or use a field) ===
+; For now, just show a generic type using [text_type] if you add it later.
+font="Beleren",14,,#000000
+rectangle=[all],6%,58%,88%,8%,#D9D9D9,[box_border],0.08cm,0.35cm
+; text=[all],[type],8%,58%,84%,8%,left,center
+
+; === Rules text box ===
+rectangle=[all],6%,68%,88%,22%,[box_back],[box_border],0.08cm,0.35cm
+
+font="Times New Roman",11,,#000000
+text=[all],[text],9%,70%,82%,18%,left,wwtop
+
+; === Copyright / set line (bottom) ===
+font="Times New Roman",7,,#000000
+text=[all],"TM & © Your Game",6%,90%,88%,6%,right,center
+
 print=[all]
