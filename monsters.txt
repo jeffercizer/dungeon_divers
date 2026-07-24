@@ -1,0 +1,36 @@
+link=monsters.xlsx
+
+[all]="1-{(title)}"
+[back]=#FFFFFF
+[box_back]=#FFFFFF
+[box_border]=#000000
+
+; Background
+rectangle=[all],0,0,100%,100%,[back]
+
+; IMAGE AREA
+rectangle=[all],8%,8%,84%,55%,[box_back]
+image=[all],[image],8%,8%,84%,55%,0,P
+rectangle=[all],8%,8%,84%,55%,[box_border],empty,0.1
+
+; TITLE BAR
+
+; TITLE (center)
+font="Arial",14,T,#000000
+text=[all],"[hp] HP",1%,0%,76%,8%,left,center
+
+; VP (right of title)
+rectangle=[all],88%,1%,12%,6%,[box_back],[box_border],0.3cm,0.3cm
+font="Arial",12,B,#000000
+text=[all],"[vp] VP",84%,1%,16%,6%,center,center
+
+font="Arial",18,T,#000000
+text=[all],[title],12%,63%,76%,8%,center,center
+
+; TEXT BOX
+font="Times New Roman",11,T,#000000
+text=[all],[text], 8%,72%,84%,18%,left,wwtop
+
+; RESOURCES BOX (bottom)
+font="Times New Roman",10,B,#000000
+text=[all],"Grants [resources]",2.5%,91%,95%,6%,center,center
